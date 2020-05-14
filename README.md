@@ -75,7 +75,7 @@ AWS Minikube is a single node Kubernetes deployment in AWS. It creates EC2 host 
 
 ## Prerequisites and dependencies
 
-* AWS Minikube deployes into existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration or [this](https://github.com/scholzj/terraform-aws-vpc) module to create one.
+* AWS Minikube deployes into existing VPC / public subnet. If you don't have your VPC / subnet yet, you can use [this](https://github.com/scholzj/aws-vpc) configuration or [this](https://github.com/thirupathi-chintu/terraform-aws-vpc) module to create one.
   * The VPC / subnet should be properly linked with Internet Gateway (IGW) and should have DNS and DHCP enabled.
   * Hosted DNS zone configured in Route53 (in case the zone is private you have to use IP address to copy `kubeconfig` and access the cluster).
 * To deploy AWS Minikube there are no other dependencies apart from [Terraform](https://www.terraform.io). Kubeadm is used only on the EC2 host and doesn't have to be installed locally.
@@ -86,7 +86,7 @@ Although it can be run on its own, the main value is that it can be included int
 
 ```hcl
 module "minikube" {
-  source = "github.com/scholzj/terraform-aws-minikube"
+  source = "github.com/thirupathi-chintu/terraform-aws-minikube"
 
   aws_region    = "eu-central-1"
   cluster_name  = "my-minikube"
