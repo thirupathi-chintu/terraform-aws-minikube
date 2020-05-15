@@ -232,20 +232,4 @@ resource "aws_eip_association" "minikube_assoc" {
   allocation_id = aws_eip.minikube.id
 }
 
-#####
-# DNS record
-#####
-
-data "aws_route53_zone" "dns_zone" {
-  name = "${var.hosted_zone}."
-  private_zone = var.hosted_zone_private
-}
-
-resource "aws_route53_record" "minikube" {
-  zone_id = data.aws_route53_zone.dns_zone.zone_id
-  name = "${var.cluster_name}.${var.hosted_zone}"
-  type = "A"
-  records = [aws_eip.minikube.public_ip]
-  ttl = 300
-}
 
